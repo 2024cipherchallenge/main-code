@@ -177,4 +177,4 @@ def playfair_decrypt(ciphertext, keyword):
 
 
 
-
+print(eval(input("Enter code : ")))
