@@ -1,0 +1,3 @@
+vigenere cypher:
+ciphertext - LXFOPVEFRNHR
+keyword - LEMON
