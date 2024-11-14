@@ -96,14 +96,14 @@ class Cypher_Tools:
 
             label=Label(tools,text="Tools")
             label.pack(expand=1)
-            textbox=Text(tools,height=5)
-            textbox.pack(expand=1)
             labelT=Label(tools,text="Input Text")
             labelT.pack(expand=1)
-            output=Text(tools,height=5)
-            output.pack(expand=1)
+            textbox=Text(tools,height=5)
+            textbox.pack(expand=1)
             labelO=Label(tools,text="Output")
             labelO.pack(expand=1)
+            output=Text(tools,height=5)
+            output.pack(expand=1)
             btnFrequency=Button(tools,text="Frequency Analaysis",command=frequency)
             btnFrequency.pack(expand=1)
         def Ceasure():
@@ -127,44 +127,50 @@ class Cypher_Tools:
                         if ord(character)>122:
                             character=chr(ord(character)-26)
                     string1+=character
+                output.delete("1.0",END)
                 output.insert(INSERT,string1)
 
             label=Label(top,text="Ceasure").pack(expand=1)
             labelT=Label(top,text="Input").pack(expand=1)
-            textbox=Text(top,height=5).pack(expand=1)
+            textbox=Text(top,height=5)
+            textbox.pack(expand=1)
             var=StringVar()
-            slider=Scale(window,variable=var,from_=0,to=25,orient=HORIZONTAL).pack(expand=1)
+            slider=Scale(top,variable=var,from_=0,to=25,orient=HORIZONTAL).pack(expand=1)
             labelO=Label(top,text="Output").pack(expand=1)
-            output=Text(top,height=5).pack(expand=1)
-            btnCeasure=Buttton(top,text="Ceasure Shift",command=ceasureShift).pack(expand=1)
+            output=Text(top,height=5)
+            output.pack(expand=1)
+            btnCeasure=Button(top,text="Ceasure Shift",command=ceasureShift).pack(expand=1)
         def Sub():
             top=Toplevel(win)
             top.geometry("400x400")
             top.title("Substitution Cypher")
             def sub(character):
-                replace=textbox2.get("1.0",END)
+                replace=textbox2.get("1.0","end-1c")
                 input=textbox.get("1.0","end-1c")
                 array=[]
-                if len(replace)>1:
+                if len(replace)>1 or replace=="":
                     textbox2.delete("1.0",END)
                     textbox2.insert(INSERT,"Input for subsitution cypher can only be one character")
                     return None
                 for i in range(len(input)):
                     array+=input[i:i+1]
-                    if array[i]==character:
+                    if array[i].lower()==character:
                         array[i]=replace
                 input=""
                 for i in range(len(array)):
                     input+=array[i]
-                textbox.delete("1.0",END)
+
                 textbox2.delete("1.0",END)
+                output.delete("1.0",END)
                 output.insert(INSERT,input)
 
             label=Label(top,text="Substitution").pack(expand=1)
             labelT=Label(top,text="Input Cypher").pack(expand=1)
-            textbox=Text(top,height=5).pack(expand=1)
+            textbox=Text(top,height=5)
+            textbox.pack(expand=1)
             labelT2=Label(top,text="Input what you are substituting").pack(expand=1)
-            textbox2=Text(top,height=1,width=1).pack(expand=1)
+            textbox2=Text(top,height=1,width=10)
+            textbox2.pack(expand=1)
             buttonframe=Frame(top)
             buttonframe.columnconfigure(0, weight=1)
             buttonframe.columnconfigure(1, weight=1)
@@ -234,7 +240,8 @@ class Cypher_Tools:
             btnz.grid(row=1,column=12,sticky=W+E)
             buttonframe.pack()
             labelO=Label(top,text="Output").pack(expand=1)
-            output=Text(top,height=5).pack(expand=1)
+            output=Text(top,height=5)
+            output.pack(expand=1)
         
             
 
