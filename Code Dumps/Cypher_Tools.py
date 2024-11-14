@@ -250,11 +250,13 @@ class Cypher_Tools:
         win.geometry("400x400")
         win.title("CypherTools")
 
-        Grid.rowconfigure(win,0, weight=1)
-        Grid.columnconfigure(win,0,weight=1)
-        Grid.rowconfigure(win,1,weight=1)
-        Grid.columnconfigure(win,1,weight=1)
+        cols=2
+        rows=2
 
+        for i in range (cols):
+            Grid.columnconfigure(win,i,weight=1)
+        for i in range(rows):
+            Grid.rowconfigure(win,i,weight=1)
 
         btn_Ceasure=Button(win,text="Ceasure Cypher",command=Ceasure)
         btn_Ceasure.grid(row=0,column=0,sticky="NEWS")
